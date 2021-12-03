@@ -35,7 +35,7 @@ printfn $"Gamma: {gamma} * Delta: {delta} = {gamma * delta}"
 
 let mutable inputList = Array.toList input
 
-let rec filterListByPosition (position: int) (input: string list): string list =
+let rec filterListByPosition (position: int) (input: string list) filterFn: string list =
     let mutable oneCount, zeroCount = 0, 0
     
     for j = 0 to input.Length-1 do
@@ -45,7 +45,7 @@ let rec filterListByPosition (position: int) (input: string list): string list =
             zeroCount <- zeroCount + 1
             
     let filteredInput =
-        if oneCount >= zeroCount then
+        if filterFn oneCount zeroCount then
             input |> List.filter (fun str -> str[position] = '1')
         else
             input |> List.filter (fun str -> str[position] = '0')
@@ -55,34 +55,10 @@ let rec filterListByPosition (position: int) (input: string list): string list =
     if filteredInput.Length = 1 then
         filteredInput
     else
-        filterListByPosition (position+1) filteredInput
+        filterListByPosition (position+1) filteredInput filterFn
         
-let oxygenBits= filterListByPosition 0 inputList
-
-let rec filterListByPositionCO2 (position: int) (input: string list): string list =
-    let mutable oneCount, zeroCount = 0, 0
-    
-    for j = 0 to input.Length-1 do
-        if input[j][position] = '1' then
-            oneCount <- oneCount + 1
-        else
-            zeroCount <- zeroCount + 1
-            
-    let filteredInput =
-        printfn $"{oneCount} : {zeroCount}"
-        if zeroCount <= oneCount then
-            input |> List.filter (fun str -> str[position] = '0')
-        else
-            input |> List.filter (fun str -> str[position] = '1')
-    
-    printfn $"{filteredInput}"
-    
-    if filteredInput.Length = 1 then
-        filteredInput
-    else
-        filterListByPositionCO2 (position+1) filteredInput
-        
-let CO2Bits = filterListByPositionCO2 0 inputList
+let oxygenBits= filterListByPosition 0 inputList (fun ones zeroes -> ones >= zeroes)
+let CO2Bits = filterListByPosition 0 inputList (fun ones zeroes -> zeroes > ones)
 
 let oxygen, CO2 = Convert.ToInt32(oxygenBits[0], 2), Convert.ToInt32(CO2Bits[0], 2)
 
