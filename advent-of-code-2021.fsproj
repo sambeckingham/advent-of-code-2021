@@ -7,13 +7,31 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="./day-1/Program.fs" />
-    <Compile Include="./day-2/Program.fs" />
-    <Compile Include="./day-3/Program.fs" />
-    <Compile Include="./day-4/Program.fs" />
-    <Compile Include="./day-6/Program.fs" />
-    <Compile Include="./day-7/Program.fs" />
+    <Compile Include="Day1.fs" />
+    <Compile Include="Day2.fs" />
+    <Compile Include="Day3.fs" />
+    <Compile Include="Day4.fs" />
+    <Compile Include="Day6.fs" />
+    <Compile Include="Day7.fs" />
     <Compile Include="Program.fs" />
+    <Content Include="input\07">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\06">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\04">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\03">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\02">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="input\01">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 
