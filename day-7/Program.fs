@@ -1,12 +1,12 @@
 ﻿
 open System.IO
 
-let input =
+let lines =
     File.ReadAllText("input").Split(",")
     |> Array.map int
     
 let upperBound =
-    input
+    lines
     |> Array.max
 
 let getTotalFuel endPosition initialPositions = 
@@ -15,7 +15,7 @@ let getTotalFuel endPosition initialPositions =
     |> Array.sum
 
 [|0..upperBound|]
-|> Array.map (fun x -> getTotalFuel x input)
+|> Array.map (fun x -> getTotalFuel x lines)
 |> Array.min
 |> fun x -> printfn $"Petrol: {x}"
 
@@ -29,6 +29,6 @@ let getTotalExpensiveFuel endPosition initialPositions =
     |> Array.sum     // 4. Profit
 
 [|0..upperBound|]
-|> Array.map (fun x -> getTotalExpensiveFuel x input)
+|> Array.map (fun x -> getTotalExpensiveFuel x lines)
 |> Array.min
 |> fun x -> printfn $"Diesel: {x}"
