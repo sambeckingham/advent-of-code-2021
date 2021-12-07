@@ -1,7 +1,9 @@
-﻿open System
+﻿module Day3
+
+open System
 open System.IO
 
-let input: string[] = File.ReadAllLines("./input")
+let input: string[] = File.ReadAllLines("./input/03")
 
 // Part 1
 
@@ -28,10 +30,10 @@ let deltaBits = gammaBits
                 |> String.map (fun c -> if c = '1' then '0' else '1')
 let delta = Convert.ToInt32(deltaBits, 2)
 
-printfn $"Gamma: {gamma} * Delta: {delta} = {gamma * delta}"
+let part1 = gamma * delta
 // Gamma: 1337 * Delta: 2758 = 3687446
 
-// Part 2 - Fuck functional programming
+// Part 2
 
 let mutable inputList = Array.toList input
 
@@ -50,8 +52,6 @@ let rec filterListByPosition (position: int) (input: string list) filterFn: stri
         else
             input |> List.filter (fun str -> str[position] = '0')
     
-    printfn $"{filteredInput}"
-    
     if filteredInput.Length = 1 then
         filteredInput
     else
@@ -62,5 +62,5 @@ let CO2Bits = filterListByPosition 0 inputList (fun ones zeroes -> zeroes > ones
 
 let oxygen, CO2 = Convert.ToInt32(oxygenBits[0], 2), Convert.ToInt32(CO2Bits[0], 2)
 
-printfn $"Oxy: {oxygen} * CO2: {CO2} = {oxygen * CO2}"
+let part2 = oxygen * CO2
 // Oxy: 1599 * CO2: 2756 = 4406844

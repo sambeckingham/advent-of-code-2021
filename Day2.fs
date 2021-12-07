@@ -1,8 +1,8 @@
-﻿
+﻿module Day2
 
 open System.IO
 
-let lines = File.ReadAllLines("./input")
+let lines = File.ReadAllLines("./input/02")
 
 // Part 1
 
@@ -22,7 +22,7 @@ lines
 |> Array.map parseCommand
 |> ignore
 
-printfn $"{fst position * snd position}"
+let part1 = fst position * snd position
 
 // Part 2
 
@@ -42,5 +42,5 @@ lines
 |> Array.map parseCommandWithFeeling
 |> ignore
 
-let (x, depth, _) = orientation
-printfn $"{x * depth}"
+let x, depth, _ = orientation
+let part2 = x * depth
