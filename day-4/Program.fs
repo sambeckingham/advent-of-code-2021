@@ -1,7 +1,9 @@
-﻿open System
+﻿module Day4
+
+open System
 open System.IO
 
-let lines = File.ReadAllLines("./input")
+let lines = File.ReadAllLines("./input/04")
 
 let numbers = lines[ 0 ].Split ',' |> Array.map int
 
@@ -65,8 +67,6 @@ for card in 1 .. 6 .. lines.Length - 1 do
 let mutable firstWinner, lastWinner = 0, 0
 
 for num in numbers do
-    printfn $"Drawing {num}..."
-
     for card in bingoCards do
         card.MarkNumber num
 
@@ -80,5 +80,4 @@ for num in numbers do
             else
                 bingoCards <- bingoCards |> List.filter (fun bc -> bc <> card)
 
-printfn $"First to win is: {firstWinner}"
-printfn $"Last to win is: {lastWinner}"
+let part1, part2 = firstWinner, lastWinner

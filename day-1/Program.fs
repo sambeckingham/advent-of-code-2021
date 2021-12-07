@@ -1,17 +1,24 @@
-﻿open System.IO
+﻿module Day1
+
+open System.IO
 
 let input =
-    File.ReadAllLines("./input") |> Array.map int
+    File.ReadAllLines("./input/01") |> Array.map int
 
 let countIncrements input =
+    let incrementalNumbers x =
+        match x with
+        | [| a; b |] -> a < b
+        | _ -> false
+
     input
     |> Array.windowed 2
-    |> Array.filter (fun [| a; b |] -> a < b)
+    |> Array.filter incrementalNumbers
     |> Array.length
 
 // Part 1
 
-printfn $"{input |> countIncrements}"
+let part1 = input |> countIncrements
 
 // Part 2
 
@@ -21,4 +28,4 @@ let slidingWindow input =
     |> Array.map Array.sum
     |> countIncrements
 
-printfn $"{slidingWindow input}"
+let part2 = slidingWindow input
