@@ -21,3 +21,7 @@ printfn $"Part 2: {Day6.part2}\n"
 printfn "Day 7:\n"
 printfn $"Part 1: {Day7.part1}"
 printfn $"Part 2: {Day7.part2}\n"
+
+printfn "Day 8:\n"
+printfn $"Part 1: {Day8.part1}"
+printfn $"Part 2: {Day8.part2}\n"
